@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
     <title>hangman</title>
 </head>
 <body>
-    <header>will keep it as an empty space</header>
+    <header></header>
     <main>
-        <section>game title - hangman game</section>
-        <section> guess letter</section>
-        <section>keyboard</section>
-        <section>draw the hangman</section>
+        <section class="game__header">
+            <section class="game__header__content">
+                <article class="game__header__content__title" id="gameName">
+                    <span>HANGMAN GAME</span>
+                </article>
+            </section>
+        </section>
+        <section class="guess">
+            <article class="guess__content">
+                GUESS A WORD
+            </article>
+        </section>
+        <section class="game__body">
+            <section class="game__body__keyboard">
+            </section>
+            <section class="game__body__drawing">
+            </section>
+        </section>
     </main>
     <footer>Petr Valouch copyright 2024</footer>
 </body>
