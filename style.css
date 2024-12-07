@@ -9,12 +9,13 @@ body {
 }
 .game__header__content {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  padding-top: 50px;
   width: 80%;
 }
 .game__header__content__title {
-  font-size: 1.2em;
+  font-size: 1.6em;
+  font-weight: bold;
 }
 
 .guess {
@@ -33,16 +34,37 @@ body {
 .game__body {
   display: flex;
   justify-content: center;
+  padding-bottom: 40px;
 }
 .game__body__keyboard {
-  background-color: goldenrod;
-  height: 70vh;
+  height: 75vh;
   width: 40%;
 }
+.game__body__keyboard__keys {
+  height: 600px;
+}
+.game__body__keyboard .btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 32px;
+  background-color: rgb(252, 232, 197);
+  font-size: 1.1em;
+}
 .game__body__drawing {
-  background-color: aquamarine;
-  height: 70vh;
+  height: 75vh;
   width: 40%;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+}
+.copyright__content {
+  width: 80%;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: flex-start;
 }
 
 /*# sourceMappingURL=style.css.map */
