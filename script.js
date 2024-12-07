@@ -1,4 +1,7 @@
 import { createEl, removeEl } from "./modules/dom/dom.js";
+import { getRandomWord } from "./modules/maths/getRandomWord.js";
+import { converToDashes } from "./modules/maths/convertToDashes.js";
+
 
 const alphabet = [
   "a",
@@ -31,21 +34,64 @@ const alphabet = [
 
 const keyboard = document.getElementById("keyboard");
 let letter = "";
+let word = "";
+let dashedWord = "";
 
 alphabet.forEach((key) => {
   const keyElement = document.createElement("button");
   keyElement.textContent = key.toUpperCase();
   keyElement.classList.add("key");
   keyElement.addEventListener("click", () => {
-    //console.dir(keyElement.textContent);
+    
+    // get the letter
     letter = keyElement.textContent;
+    // compare it with the word - find the index or indexes
+    //if (word) {
+      console.log(word);
+      //console.log(letter);
+      const result = word.toUpperCase().split("").indexOf(letter);
+      console.log(result);
+    //}
+    // if corect update the displayed dashes
+    // if incorect - draw hangman
+    // in both cases disable the letter on keyboard
+    if (result === -1) {
+      console.log("Draw hangman part");
+      // disable this letter
+    } else {
+      console.log("update dash word");
+      // update dashes
+      //const updated = dashedWord.split(" ")[result] = letter;
+      //console.log(updated);
+      console.log(dashedWord);
+      console.log(dashedWord.split(" "));
+      dashedWord = dashedWord.split(" ").map((el, index) => {
+        if (index === result) {
+          return el = letter;
+        }
+        // } else {
+        //   el = "_";
+        // }
+        console.log(el);
+        return el;
+      }).join(" ");
+
+      // dashedWord.split(" ").map((el, index) => {
+      //   console.log(el);
+      //   if(index === result) {
+      //     return el = letter;
+      //   }
+      //   return el;
+      // }).join("_");
+    }
+
     removeEl(
       document.getElementById("guess-string"),
       document.getElementById("guess"),
     );
     createEl(
       "p", 
-      letter, 
+      dashedWord, 
       document.getElementById("guess"),
       "guess-string",
     );
@@ -56,7 +102,26 @@ alphabet.forEach((key) => {
 
 const btnPlay = document.querySelector("#play");
 btnPlay.addEventListener("click", () => {
-  //console.log("button play clicked!");
+
+  // if there is a word displayed - remove it
+  removeEl(
+    document.getElementById("guess-string"),
+    document.getElementById("guess"),
+  );
+
+  // random word
+  word = getRandomWord();
+  // convert to dashes
+  dashedWord = converToDashes(word);
+  console.log(word);
+  // create element with hidden word
+  createEl(
+    "p", 
+    dashedWord,
+    document.getElementById("guess"),
+    "guess-string",
+  );
+
 });
 
 const btnQuit = document.querySelector("#quit");
