@@ -82,7 +82,6 @@ body {
 .game__body__drawing {
   height: 75vh;
   width: 40%;
-  border: 1px solid red;
 }
 
 .copyright {
