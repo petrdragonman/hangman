@@ -43,7 +43,6 @@ body {
         &__keyboard {
             display: flex;
             flex-direction: row;
-            //gap: 10px;
             width: 50%;
             &__keys {
                 display: flex;
@@ -75,12 +74,10 @@ body {
                 font-weight: bold;
             }
         }
-        
     }
     &__drawing {
         height: 75vh;
         width: 40%;
-        border: 1px solid red;
     }
 }
 .copyright {
