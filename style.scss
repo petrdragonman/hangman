@@ -26,31 +26,61 @@ body {
         font-size: 2.5em;
         font-weight: bold;
         height: 10vh;
+        padding-bottom: 20px;
     }
 }
 .game__body {
     display: flex;
     justify-content: center;
-    
-    padding-bottom: 40px;
-    &__keyboard {
-        height: 75vh;
-        width: 40%;
-        &__keys {
-            height: 600px;
+    align-items: flex start;
+    &__control {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;  
+        padding-top: 30px;
+        gap: 60px;
+        &__keyboard {
+            display: flex;
+            flex-direction: row;
+            //gap: 10px;
+            width: 50%;
+            &__keys {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 8px;
+                .key {
+                    border-radius: 10px;
+                    font-size: 1.6em;
+                    height: 60px;
+                    width: 60px;
+                }
+            }
         }
-        .btn {
-            margin-right: 10px;
-            margin-bottom: 10px;
-            width: 150px;
-            height: 32px;
-            background-color: rgb(252, 232, 197);
-            font-size: 1.1em;
+        &__btn {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            .btn {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+                height: 46px;
+                background-color: rgb(252, 232, 197);
+                font-size: 1.2em;
+                font-weight: bold;
+            }
         }
+        
     }
     &__drawing {
         height: 75vh;
         width: 40%;
+        border: 1px solid red;
     }
 }
 .copyright {
