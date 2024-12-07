@@ -6,16 +6,17 @@ body {
     display: flex;
     justify-content: center;
     &__content {
-        //border: 1px solid red;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
         width: 80%;
         &__title {
-            font-size: 1.2em;
+            font-size: 1.6em;
+            font-weight: bold;
         }
     }
-}.guess {
+}
+.guess {
     display: flex;
     justify-content: center;
     &__content {
@@ -30,14 +31,36 @@ body {
 .game__body {
     display: flex;
     justify-content: center;
+    
+    padding-bottom: 40px;
     &__keyboard {
-        background-color: goldenrod;
-        height: 70vh;
+        height: 75vh;
         width: 40%;
+        &__keys {
+            height: 600px;
+        }
+        .btn {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 150px;
+            height: 32px;
+            background-color: rgb(252, 232, 197);
+            font-size: 1.1em;
+        }
     }
     &__drawing {
-        background-color: aquamarine;
-        height: 70vh;
+        height: 75vh;
         width: 40%;
     }
+}
+.copyright {
+    display: flex;
+    justify-content: center;
+    &__content {
+        width: 80%;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: flex-start;
+    }
+
 }
