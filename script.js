@@ -64,10 +64,12 @@ alphabet.forEach((key) => {
 
     if (!dashedWord.includes("_")) {
       alert("CONGRATULATION, You have guessed the correct word!");
+      btnPlay.disabled = false;
     }
 
     if(counter >= 10) {
       alert("SORRY, You Lost!");
+      btnPlay.disabled = false;
     }
     // disable the buttun after the user clicks it
     keyElement.disabled = true;
@@ -89,6 +91,8 @@ alphabet.forEach((key) => {
 
 const btnPlay = document.querySelector("#play");
 btnPlay.addEventListener("click", () => {
+  // disable the button when clicked by user
+  btnPlay.disabled = true;
 
   // if there is a word displayed - remove it
   removeEl(
@@ -115,6 +119,8 @@ btnPlay.addEventListener("click", () => {
 const btnQuit = document.querySelector("#quit");
 btnQuit.addEventListener("click", () => {
   //console.log("button quit was clicked!");
+  counter = 11;
+  alert("THANK YOU FOR PLAYING");
 });
 
 // const createEl = () => {
