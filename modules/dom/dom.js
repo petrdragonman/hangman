@@ -6,6 +6,13 @@ export const createEl = (elType, textVal, parent, id = "defaultId") => {
     parent.appendChild(el);
 };
 
+export const creatImgEl = (elType, src, parent, id = "imgId") => {
+    const imgEl = document.createElement(elType);
+    imgEl.src = src;
+    imgEl.id = id;
+    parent.appendChild(imgEl);
+};
+
 export const removeEl = (el, parent) => {
     if (el) {
         parent.removeChild(el);
