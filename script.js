@@ -1,6 +1,8 @@
 import { createEl, removeEl } from "./modules/dom/dom.js";
 import { getRandomWord } from "./modules/maths/getRandomWord.js";
 import { converToDashes } from "./modules/maths/convertToDashes.js";
+import { updateStringWithGuessedLetter } from "./modules/maths/updateStringWithGuessedLetter.js.js";
+import { getIndices } from "./modules/maths/getIndices.js";
 
 
 const alphabet = [
@@ -36,54 +38,39 @@ const keyboard = document.getElementById("keyboard");
 let letter = "";
 let word = "";
 let dashedWord = "";
+let counter = 0;
 
 alphabet.forEach((key) => {
   const keyElement = document.createElement("button");
   keyElement.textContent = key.toUpperCase();
   keyElement.classList.add("key");
   keyElement.addEventListener("click", () => {
-    
+    // start the counter;
+    counter++;
     // get the letter
     letter = keyElement.textContent;
-    // compare it with the word - find the index or indexes
-    //if (word) {
-      console.log(word);
-      //console.log(letter);
-      const result = word.toUpperCase().split("").indexOf(letter);
-      console.log(result);
-    //}
-    // if corect update the displayed dashes
-    // if incorect - draw hangman
-    // in both cases disable the letter on keyboard
-    if (result === -1) {
+    console.log(letter);
+    console.log(word);
+    // get indices for the guessed letter
+    const indices = getIndices(word, letter);
+    if (indices.length === 0) {
       console.log("Draw hangman part");
       // disable this letter
     } else {
       console.log("update dash word");
       // update dashes
-      //const updated = dashedWord.split(" ")[result] = letter;
-      //console.log(updated);
-      console.log(dashedWord);
-      console.log(dashedWord.split(" "));
-      dashedWord = dashedWord.split(" ").map((el, index) => {
-        if (index === result) {
-          return el = letter;
-        }
-        // } else {
-        //   el = "_";
-        // }
-        console.log(el);
-        return el;
-      }).join(" ");
-
-      // dashedWord.split(" ").map((el, index) => {
-      //   console.log(el);
-      //   if(index === result) {
-      //     return el = letter;
-      //   }
-      //   return el;
-      // }).join("_");
+      dashedWord = updateStringWithGuessedLetter(dashedWord, letter, indices);
     }
+
+    if (!dashedWord.includes("_")) {
+      alert("CONGRATULATION, You have guessed the correct word!");
+    }
+
+    if(counter >= 10) {
+      alert("SORRY, You Lost!");
+    }
+    // disable the buttun after the user clicks it
+    keyElement.disabled = true;
 
     removeEl(
       document.getElementById("guess-string"),
@@ -114,6 +101,7 @@ btnPlay.addEventListener("click", () => {
   // convert to dashes
   dashedWord = converToDashes(word);
   console.log(word);
+  console.log(dashedWord);
   // create element with hidden word
   createEl(
     "p", 
