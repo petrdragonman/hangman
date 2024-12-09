@@ -3,6 +3,5 @@ export const getIndices = (word, letter) => {
         .toUpperCase()
         .split("")
         .reduce((acc, el, i) => acc.concat(el === letter ? i : []), []);
-    console.log(indices);
     return indices;
 };

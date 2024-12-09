@@ -1,7 +1,4 @@
 export const updateStringWithGuessedLetter = (word, letter, indexes) => {
-    console.log(word);
-    console.log(letter);
-    console.log(indexes);
     // convert string to an array
     const convertedToArray = word.split(" ");
     // replace dash with a guessed letter at index
